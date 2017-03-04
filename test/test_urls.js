@@ -84,11 +84,10 @@ describe('project', function () {
       projects.forEach((project) => {
           context(`${project.name}`, function () {
               project.configurations.forEach((configuration) => {
-                context(`${configuration}`, function () {
+                context(`${configuration.join(', ')}`, function () {
                   configuration.forEach((component) => {
                     context(`${component}`, function () {
-                      it('should be an allowable component', function () {
-                        //return true;
+                      it('is an allowable component', function () {
                         component.should.be.oneOf(requirements);
                       });
                     });
