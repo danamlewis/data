@@ -81,25 +81,22 @@ describe('project', function () {
   });
   describe('configurations', function () {
     context('when not null', function () {
-      projects.filter((project) => project.configurations !== null)
-        .forEach((project) => {
+      projects.forEach((project) => {
           context(`${project.name}`, function () {
-            context('should only use allowed requirements', function() {
               project.configurations.forEach((configuration) => {
                 context(`${configuration}`, function () {
                   configuration.forEach((component) => {
                     context(`${component}`, function () {
-                      it('should only use allowable requirements', function () {
+                      it('should be an allowable component', function () {
                         //return true;
                         component.should.be.oneOf(requirements);
                       });
                     });
                   });
                 });
+              });
             });
           });
         });
       });
     });
-  });
-});
